@@ -1,3 +1,5 @@
+%TODO: add an 'output_model_file' parameter
+
 function [rcnn_model, rcnn_k_fold_model] = ...
     rcnn_train(imdb, varargin)
 % [rcnn_model, rcnn_k_fold_model] = rcnn_train(imdb, varargin)
