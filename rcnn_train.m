@@ -46,7 +46,7 @@ ip.addParamValue('net_file', ...
     @isstr);
 ip.addParamValue('cache_name', ...
     'v1_finetune_voc_2007_trainval_iter_70000', @isstr);
-
+ip.addParamValue('out_model_file', 'rcnn_model')
 
 ip.parse(imdb, varargin{:});
 opts = ip.Results;
@@ -188,12 +188,12 @@ for hard_epoch = 1:max_hard_epochs
     first_time = false;
 
     if opts.checkpoint > 0 && mod(i, opts.checkpoint) == 0
-      save([conf.cache_dir 'rcnn_model'], 'rcnn_model');
+      save([conf.cache_dir '/' opts.out_model_file], 'rcnn_model');
     end
   end
 end
 % save the final rcnn_model
-save([conf.cache_dir 'rcnn_model'], 'rcnn_model');
+save([conf.cache_dir '/' opts.out_model_file], 'rcnn_model');
 % ------------------------------------------------------------------------
 
 % ------------------------------------------------------------------------

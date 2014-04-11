@@ -1,7 +1,4 @@
-
-%TODO: add an 'out_model_file' input param
-
-function [res_test, res_train] = rcnn_exp_train_and_test(net_file, cache_name)
+function [res_test, res_train] = rcnn_exp_train_and_test(net_file, cache_name, out_model_file)
 % Runs an experiment that trains an R-CNN model and tests it.
 
 % -------------------- CONFIG --------------------
@@ -26,7 +23,8 @@ imdb_test = imdb_from_voc(VOCdevkit, 'test', '2007');
       'cache_name',   cache_name, ...
       'net_file',     net_file, ...
       'crop_mode',    crop_mode, ...
-      'crop_padding', crop_padding);
+      'crop_padding', crop_padding, ...
+      'out_model_file', out_model_file); %saves the final model to out_model_file.
 
 if k_folds > 0
   res_train = rcnn_test(rcnn_k_fold_model, imdb_train);
